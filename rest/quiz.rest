@@ -1,0 +1,78 @@
+GET http://localhost:8000/api/quizzes
+
+###
+GET http://localhost:8000/api/quizzes/620ed03d063a0d4ce661d6ab
+
+###
+PUT http://localhost:8000/api/quizzes/620ebb50c6744415f219963c
+Content-Type: application/json
+
+{
+    "name": "test quiz 1",
+    "questions": [
+      {
+        "text": "question #1",
+        "answer": true
+      },
+      {
+        "text": "question #2",
+        "answer": false,
+        "id": "poop"
+      },
+      {
+        "text": "question #3",
+        "answer": true,
+        "id": "61fff8"
+      }
+    ]
+}
+
+###
+POST http://localhost:8000/api/quizzes
+Content-Type: application/json
+
+{
+    "name": "test quiz 4",
+    "questions": [
+        {
+            "text": "question #1",
+            "answer": true
+        },
+        {
+            "text": "question #2",
+            "answer": false
+        },
+        {
+            "text": "question #3",
+            "answer": true
+        }
+    ]
+}
+
+###
+POST http://localhost:8000/api/quizzes
+Content-Type: application/json
+
+{
+    "name": "test quiz 1105",
+    "questions": [
+        {
+            "text": "question #1",
+            "answer": true
+        },
+        {
+            "text": "question #2",
+            "answer": false
+        },
+        {
+            "text": "question #3",
+            "answer": true
+        }
+    ]
+}
+
+###
+DELETE http://localhost:8000/api/quizzes/620ebb50c6744415f219963c
+
+###
+GET http://localhost:8000/timeout

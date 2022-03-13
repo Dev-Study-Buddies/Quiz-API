@@ -1,0 +1,31 @@
+version: '3'
+services:
+  api-server:
+    container_name: quizzer-api
+    build:
+      context: ./
+      dockerfile: Dockerfile.dev
+    ports:
+      - "8000:8000"
+    networks:
+      - quizzer-backend
+    volumes:
+      - ./:/home/app
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo
+    logging:
+      driver: none
+    ports:
+      - "27017:27017"
+    networks:
+      - quizzer-backend
+    volumes:
+      - mongo-data:/data/db
+networks:
+  quizzer-backend:
+    driver: bridge
+volumes:
+  mongo-data:
+      driver: local

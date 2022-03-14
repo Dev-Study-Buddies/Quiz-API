@@ -1,8 +1,8 @@
 const supertest = require('supertest')
-const app = require('../../../src/api/app')
+const app = require('../../../src/http/app')
 const {quizDoc, quizService} = require('../../../src/modules/truthyQuiz')
 const db = require('../../database/localMongoConnection')
-const s = require('../../shared/sampleData')
+const s = require('../../shared/testData')
 
 const API = supertest(app)
 const quizEndpoint = '/api/quizzes'

@@ -1,5 +1,5 @@
 const db = require('../../database/localMongoConnection')
-const s = require('../../shared/sampleData')
+const s = require('../../shared/testData')
 const {quizService, quizDoc} = require('../../../src/modules/truthyQuiz')
 
 // https://dev.to/paulasantamaria/testing-node-js-mongoose-with-an-in-memory-database-32np

@@ -1,4 +1,4 @@
-const quizRouter = require('./api/router')
+const quizRouter = require('./http/router')
 const quizService = require('./service/service')
 const quizDTO = require('./service/dto')
 const questionDTO = require('./service/question/dto')

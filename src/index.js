@@ -1,4 +1,4 @@
-const server = require('./api/server')
+const server = require('./http/server')
 const database = require('./data/mongoConnection')
 const memoryDB = require('./data/localMongoDB')
 const configs = require('./shared/constants')

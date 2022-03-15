@@ -107,9 +107,15 @@ const manyTruthyQuizJSON = [
     },
 ]
 
+const sampleDevuser = {
+    apiKey: '123',
+    email: 'test@email.com',
+}
+
 module.exports = {
     singleTruthyQuizJSON,
     manyTruthyQuizJSON,
     quizName,
-    quizQuestions
+    quizQuestions,
+    sampleDevuser
 }

@@ -86,6 +86,13 @@ describe('Updating devusers', () => {
     })
 })
 
+describe('devuserService.genKey() produces API key', () => {
+    test('genKey() produces key in format of a-z0-9 with 30 char length', () => {
+        const test = devuserService.genKey()
+        expect(/^([a-z\d]){30}$/gm.test(test)).toBeTruthy()
+    })
+})
+
 afterAll(async () => {
     await db.disconnect()
 })

@@ -18,8 +18,9 @@ const retrieveByID = async (id) => {
 }
 
 const create = async payload => {
+
     const devuserDTO = {
-        apiKey : payload.apiKey,
+        apiKey: payload.apiKey,
         email: payload.email,
     }
 
@@ -28,6 +29,24 @@ const create = async payload => {
     const savedDevuser = await devuserDB.save()
 
     return savedDevuser.toJSON()
+}
+
+//src: https://github.com/prof3ssorSt3v3/how-to-api/blob/89e65d692f815ff2b79d5ac76d7010f0506632c5/server/middleware/apikeys.js#L4
+const genKey = () => {
+    const key = []
+
+    for(let i = 0; i<30; i++){
+        // bitwise or operation rounds math.random() to 1 or 0
+        // see: https://stackoverflow.com/a/48265911
+        const randomInt = Math.random() * 36 | 0
+        // Base36 radix for representing values a-z0-9
+        const randomChar = randomInt.toString(36)
+
+        key.push(randomChar)
+    }
+
+    // ex: 'an0qrr5i9u0q4km27hv2hue3ywx3uu'
+    return key.join('')
 }
 
 const remove = async id => await DevUser.findByIdAndRemove(id)
@@ -42,5 +61,6 @@ module.exports = {
     retrieveByID,
     create,
     remove,
-    update
+    update,
+    genKey,
 }

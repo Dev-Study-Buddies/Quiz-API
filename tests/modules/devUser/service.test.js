@@ -9,12 +9,8 @@ beforeAll(async () => {
 
 describe('Creating devusers', () => {
     test('devuserService.create() saves devuser to database', async () => {
-        const result = await devuserService.create(s.sampleDevuser);
-        expect(result.id).toBeTruthy()
-        expect(result.key).toBeTruthy()
-        expect(result.email).toBeTruthy()
-        expect(result.accessDate).toBeTruthy()
-        expect(result.usage).toBe(0)
+        const key = await devuserService.create(s.sampleDevuser);
+        expect(key).toHaveLength(30)
     })
 })
 
@@ -73,23 +69,21 @@ describe('Updating devusers', () => {
     })
 
     test('devuserService.update() updates devuser', async () => {
-        const newDevuser = {
+        const changes = {
             apiKey: 'abc',
             email: 'test@yahoo.com'
         }
+
+        const newDevuser = {...savedDevuser}
+        newDevuser.apiKey = changes.apiKey
+        newDevuser.email = changes.email
+
 
         const result = await devuserService.update(savedDevuser.id, newDevuser)
 
         expect(result.id).toBe(result.id)
         expect(result.key).not.toBe(savedDevuser.key)
         expect(result.email).not.toBe(savedDevuser.email)
-    })
-})
-
-describe('devuserService.genKey() produces API key', () => {
-    test('genKey() produces key in format of a-z0-9 with 30 char length', () => {
-        const test = devuserService.genKey()
-        expect(/^([a-z\d]){30}$/gm.test(test)).toBeTruthy()
     })
 })
 

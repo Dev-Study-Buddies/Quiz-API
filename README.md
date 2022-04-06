@@ -72,3 +72,8 @@
 ## Roadmap
 
 - *todo*
+
+## Note
+
+- the source code for this project is based on my code here: https://github.com/riboney/Quizzer-API
+- I've since move that project to this repository
